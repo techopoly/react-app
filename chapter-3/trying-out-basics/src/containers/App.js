@@ -18,9 +18,9 @@ class App extends Component {
 
     let clickedPerson = this.state.persons.find((person, index) => {
       if (person.id === id) {
-        const newPersons = { ...this.persons };
+        //const newPersons = { ...this.persons };
         person.name = event.target.value;
-        newPersons[index] = { ...person };
+        //newPersons[index] = { ...person };
       }
 
     })
@@ -44,6 +44,7 @@ class App extends Component {
       buttonColor = 'buttonRed';
       return (
         <div class='app'>
+          <h1>{this.props.title}</h1>
           <button className={buttonColor} onClick={this.btnHandler}>Hide Persons</button>
           <Persons persons={this.state.persons} changePerson={this.changePerson} />
         </div>
