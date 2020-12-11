@@ -1,0 +1,12 @@
+.person {
+    display: inline-block;
+    width: 20vw;
+    padding: 1rem;
+    background-color: #61b15a;
+    box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.72);
+    -webkit-box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.72);
+    -moz-box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.72);
+    margin: 15px;
+}
+
+

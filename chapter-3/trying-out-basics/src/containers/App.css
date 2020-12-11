@@ -1,0 +1,24 @@
+.app {
+  text-align: center;
+}
+
+.app .buttonYellow{
+  display: block;
+  background-color: #fff76a;
+  padding: 5px;
+  border:1px solid #ebdf08;
+  border-radius: 4px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.app .buttonRed{
+  display: block;
+  background-color: #f09042;
+  padding: 5px;
+  border:1px solid #d34808;
+  border-radius: 4px;
+  margin: auto;
+  margin-top: 20px;
+}
+
