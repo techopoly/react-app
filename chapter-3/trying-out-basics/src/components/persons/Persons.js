@@ -12,7 +12,13 @@ class Persons extends Component{
 
     shouldComponentUpdate(nextProps, nextState){
         console.log('[Persons.js] shouldComponentUpdate')
-        return true;
+        if(nextProps.persons === this.props.persons){ /* this is comparing the address/ref of 2 arrays. here,this is working coz each create new array each time and that has diff ref than the old one*/
+            
+            return false;
+        }else{
+            return true;
+        }
+        
     }
 
 

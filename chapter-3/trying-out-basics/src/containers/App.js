@@ -49,7 +49,7 @@ class App extends Component {
       if (person.id === id) {
         const newPersons = [...this.state.persons];
         //console.log(newPersons)
-        person.name = event.target.value;
+        //person.name = event.target.value;
         newPersons[index].name = event.target.value;
         this.setState({
           persons: newPersons
