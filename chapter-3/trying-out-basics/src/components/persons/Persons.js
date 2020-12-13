@@ -2,56 +2,57 @@ import React, { Component } from 'react';
 import Person from './person/Person.js';
 
 
-class Persons extends Component{
+class Persons extends Component {
     //console.log(props.persons)
     state = {}
-    static getDerivedStateFromProps(props, state){
+    static getDerivedStateFromProps(props, state) {
         console.log('[Persons.js] getDerivedStateFromProps');
         return state
     }
 
-    shouldComponentUpdate(nextProps, nextState){
+    shouldComponentUpdate(nextProps, nextState) {
         console.log('[Persons.js] shouldComponentUpdate')
-        if(nextProps.persons === this.props.persons){ /* this is comparing the address/ref of 2 arrays. here,this is working coz each create new array each time and that has diff ref than the old one*/
-            
+        if (nextProps.persons === this.props.persons) { /* this is comparing the address/ref of 2 arrays. here,this is working coz each create new array each time and that has diff ref than the old one*/
+
             return false;
-        }else{
+        } else {
             return true;
         }
-        
+
     }
 
 
-    getSnapshotBeforeUpdate(prevProps, prevState){
+    getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('[Persons.js] getSnapshotBeforeUpdate');
         return null;
     }
-     
-    componentDidUpdate(){
+
+    componentDidUpdate() {
         console.log('[Persons.js] componentDidUpdate')
     }
 
-    componentDidMount(){
+    componentDidMount() {
         console.log('[Persons.js] componentDidMount')
-      }
+    }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         console.log('[Persons.js] componentWillUnmount ')
-      }
+    }
 
     render() {
         console.log('[Persons.js] rendering...')
         return (
             this.props.persons.map((person, index) => {
-                return (<Person
-                    click={() => { this.props.clicked(index) }}
-                    name={person.name}
-                    age={person.age}
-                    key={person.id}
-                    id={person.id}
-                    changed={this.props.changePerson}>
-
-                </Person>)
+                return (
+                    <Person
+                        click={() => { this.props.clicked(index) }}
+                        name={person.name}
+                        age={person.age}
+                        key={person.id}
+                        id={person.id}
+                        changed={this.props.changePerson}>
+                        {/* <h2>this is h2</h2> {/* this does not work if we dont return this as props.children inside person component  */}
+                    </Person>)
             })
 
         )
