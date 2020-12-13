@@ -3,6 +3,7 @@
 import './App.css';
 import React, { Component } from 'react';
 import Persons from '../components/persons/Persons.js'
+import Cockpit from '../components/cockpit/cockpit.js';
 
 class App extends Component {
   state = {
@@ -14,22 +15,53 @@ class App extends Component {
     showPerson: true
   }
 
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps');
+    return state
+
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App.js] shouldComponentUpdate')
+    return true;
+  }
+
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('[App.js] getSnapshotBeforeUpdate');
+    return null;
+  }
+
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate')
+  }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount')
+  }
+
+  
+
+
   changePerson = (event, id) => {
 
     let clickedPerson = this.state.persons.find((person, index) => {
       if (person.id === id) {
-        //const newPersons = { ...this.persons };
+        const newPersons = [...this.state.persons];
+        //console.log(newPersons)
         person.name = event.target.value;
-        //newPersons[index] = { ...person };
+        newPersons[index].name = event.target.value;
+        this.setState({
+          persons: newPersons
+        })
       }
 
     })
     //console.log(clickedPerson);
-    console.log(id);
-    console.log(event.target.value);
+    //console.log(id);
+    //console.log(event.target.value);
 
-    this.setState({
-    })
+
   }
 
   btnHandler = () => {
@@ -39,28 +71,22 @@ class App extends Component {
   }
 
   render() {
-    let buttonColor = ''
+    //console.log(this.state.persons)
+    console.log('[App.js] rendering...')
     if (this.state.showPerson) {
-      buttonColor = 'buttonRed';
       return (
-        <div class='app'>
-          <h1>{this.props.title}</h1>
-          <button className={buttonColor} onClick={this.btnHandler}>Hide Persons</button>
+        <div className='app'>
+          <Cockpit showPerson={this.state.showPerson} btnHandler={this.btnHandler} title={this.props.title} />
           <Persons persons={this.state.persons} changePerson={this.changePerson} />
         </div>
       )
-      
     } else {
-      buttonColor = 'buttonYellow'
-
-      return(
-        <div class='app'>
-          <button className={buttonColor} onClick={this.btnHandler}>Show Person</button>
+      return (
+        <div className='app'>
+          <Cockpit showPerson={this.state.showPerson} btnHandler={this.btnHandler} title={this.props.title} />
         </div>
       )
     }
-
-    
   }
 }
 export default App;
